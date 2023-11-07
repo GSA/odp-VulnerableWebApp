@@ -12,6 +12,7 @@ class UserRepositoryTest {
 
   @Autowired private UserRepository userRepository;
 
+
   @Test
   void userShouldBeSaved() {
     WebGoatUser user = new WebGoatUser("test", "password");
