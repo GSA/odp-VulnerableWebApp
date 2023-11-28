@@ -48,7 +48,8 @@ jobs:
     - name: Install Horusec
       run: |
         curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
-      shell: bash
-
+        export HORUSEC_MAVEN_DISABLE="false"
+        
     - name: Run Horusec Scan
-      run: horusec start -c=horusec-config.json -p./
+      run: horusec start -p
+      # run: horusec start -c=horusec-config.json -p./
