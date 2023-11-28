@@ -46,15 +46,19 @@ jobs:
     #     arguments: -c=horusec-config.json -p./
     #      #arguments: -c=horusec-config.json -p ./
 
-    - name: Install Horusec
+    - name: Set up Horusec
       run: |
         curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
         export HORUSEC_MAVEN_DISABLE="false"
+
+    - name: Run Horusec
+      run: |
+        docker run -v "$(pwd):/src" -v /var/run/docker.sock:/var/run/docker.sock -e HORUSEC_MAVEN_DISABLE="false" -e "CI_PROJECT_NAME=${{ github.repository }}" -e "CI_PROJECT_PATH=${{ github.repository }}" -e "CI_PROJECT_REPONAME=${{ github.repository_name }}" -e "CI_COMMIT_BRANCH=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.head_ref ? 'refs/heads/' + github.head_ref : github.ref }}" -e "CI_COMMIT_SHA=${{ github.sha }}" zupit/horusec-cli:v1.15.3 start -p /src
         
     # - name: Run Horusec Scan
     #   #run: horusec start -p .
     #   run: horusec start -c=horusec-config.json -p./
 
-    - name: Run Horusec
-      run: |
-        docker run -v "$(pwd):/src" -v /var/run/docker.sock:/var/run/docker.sock -e HORUSEC_MAVEN_DISABLE="false" -e "CI_PROJECT_NAME=${{ github.repository }}" -e "CI_PROJECT_PATH=${{ github.repository }}" -e "CI_PROJECT_REPONAME=${{ github.repository_name }}" -e "CI_COMMIT_BRANCH=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.head_ref ? 'refs/heads/' + github.head_ref : github.ref }}" -e "CI_COMMIT_SHA=${{ github.sha }}" zupit/horusec-cli:v1.15.3 start -p /src
+    # - name: Run Horusec
+    #   run: |
+    #     docker run -v "$(pwd):/src" -v /var/run/docker.sock:/var/run/docker.sock -e HORUSEC_MAVEN_DISABLE="false" -e "CI_PROJECT_NAME=${{ github.repository }}" -e "CI_PROJECT_PATH=${{ github.repository }}" -e "CI_PROJECT_REPONAME=${{ github.repository_name }}" -e "CI_COMMIT_BRANCH=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.head_ref ? 'refs/heads/' + github.head_ref : github.ref }}" -e "CI_COMMIT_SHA=${{ github.sha }}" zupit/horusec-cli:v1.15.3 start -p /src
