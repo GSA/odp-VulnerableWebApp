@@ -36,17 +36,17 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Run Horusec
-      id: run_horusec
-      uses: fike/horusec-action@v0.2.2
-      with:
-        arguments: -c=horusec-config.json -p./
-         #arguments: -c=horusec-config.json -p ./
+    # - name: Run Horusec
+    #   id: run_horusec
+    #   uses: fike/horusec-action@v0.2.2
+    #   with:
+    #     arguments: -c=horusec-config.json -p./
+    #      #arguments: -c=horusec-config.json -p ./
 
-    # - name: Install Horusec
-    #   run: |
-    #     curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
-    #   shell: bash
+    - name: Install Horusec
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
+      shell: bash
 
-    # - name: Run Horusec Scan
-    #   run: horusec start -c=horusec-config.json -p./
+    - name: Run Horusec Scan
+      run: horusec start -c=horusec-config.json -p./
