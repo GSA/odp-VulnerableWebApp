@@ -1,0 +1,28 @@
+name: Horusec Scan
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  horusec-scan:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Install Horusec
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
+      shell: bash
+
+    - name: Run Horusec Scan
+      run: horusec start -p .
