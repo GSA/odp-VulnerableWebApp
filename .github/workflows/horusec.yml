@@ -13,16 +13,16 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v2
 
-    - name: Install Docker
-      run: |
-        sudo apt-get remove --purge containerd containerd.io
-        sudo apt-get -f install
-        sudo apt-get autoremove
-        sudo apt-get update
-        sudo apt-get install -y docker.io
-        sudo service docker restart  # Restart Docker to ensure the updated version is recognized
-        sudo docker --version  # Verify Docker version
-        sudo ln -s /usr/bin/docker.io /usr/local/bin/docker  # Create a symbolic link
+    # - name: Install Docker
+    #   run: |
+    #     sudo apt-get remove --purge containerd containerd.io
+    #     sudo apt-get -f install
+    #     sudo apt-get autoremove
+    #     sudo apt-get update
+    #     sudo apt-get install -y docker.io
+    #     sudo service docker restart  # Restart Docker to ensure the updated version is recognized
+    #     sudo docker --version  # Verify Docker version
+    #     sudo ln -s /usr/bin/docker.io /usr/local/bin/docker  # Create a symbolic link
       #shell: bash
 
     # - name: Set up JDK 11
@@ -34,10 +34,10 @@ jobs:
     # - name: Build with Maven
     #   run: mvn clean install
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v3
-      with:
-        node-version: '16' 
+    # - name: Set up Node.js
+    #   uses: actions/setup-node@v3
+    #   with:
+    #     node-version: '16' 
 
     # - name: Run Horusec
     #   id: run_horusec
