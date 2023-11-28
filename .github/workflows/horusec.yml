@@ -25,4 +25,4 @@ jobs:
       shell: bash
 
     - name: Run Horusec Scan
-      run: horusec start -p .
+      run: horusec start -c=horusec-config.json -p./
