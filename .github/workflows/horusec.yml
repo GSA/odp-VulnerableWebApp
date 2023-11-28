@@ -25,11 +25,11 @@ jobs:
         sudo ln -s /usr/bin/docker.io /usr/local/bin/docker  # Create a symbolic link
       #shell: bash
 
-    - name: Set up JDK 11
-      uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
+    # - name: Set up JDK 11
+    #   uses: actions/setup-java@v2
+    #   with:
+    #     distribution: 'adopt'
+    #     java-version: '11'
 
     # - name: Build with Maven
     #   run: mvn clean install
@@ -46,18 +46,15 @@ jobs:
     #     arguments: -c=horusec-config.json -p./
     #      #arguments: -c=horusec-config.json -p ./
 
+    
     - name: Set up Horusec
       run: |
         curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
         export HORUSEC_MAVEN_DISABLE="false"
 
-    - name: Run Horusec
-      run: |
-        docker run -v "$(pwd):/src" -v /var/run/docker.sock:/var/run/docker.sock -e HORUSEC_MAVEN_DISABLE="false" -e "CI_PROJECT_NAME=${{ github.repository }}" -e "CI_PROJECT_PATH=${{ github.repository }}" -e "CI_PROJECT_REPONAME=${{ github.repository_name }}" -e "CI_COMMIT_BRANCH=${{ github.event_name == 'push' && github.ref == 'refs/heads/main' && github.head_ref ? 'refs/heads/' + github.head_ref : github.ref }}" -e "CI_COMMIT_SHA=${{ github.sha }}" zupit/horusec-cli:v1.15.3 start -p /src
-        
-    # - name: Run Horusec Scan
-    #   #run: horusec start -p .
-    #   run: horusec start -c=horusec-config.json -p./
+    - name: Run Horusec Scan
+      #run: horusec start -p .
+      run: horusec start -c=horusec-config.json -p./
 
     # - name: Run Horusec
     #   run: |
