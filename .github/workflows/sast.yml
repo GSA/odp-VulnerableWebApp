@@ -3,29 +3,30 @@ name: Horusec Scan
 on: [push]
 
 jobs:
-  checking_code:
+  horusec:
     runs-on: ubuntu-latest
+    
     steps:
-      - name: Install Docker
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y docker.io
-        shell: bash
-        
-      - name: Horusec Scan
-      - uses: actions/checkout@v3
-  
-        # - name: Run Horusec
-        #   id: run_horusec
-        #   uses: fike/horusec-action@v0.2.2
-        #   with:
-        #     arguments: -c=horusec-config.json -p./
-        #     #arguments: -c=horusec-config.json -p ./
-      - name: Set up Horusec
-        run: |
-          curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
-          export HORUSEC_MAVEN_DISABLE="false"
-        shell: bash
-  
-      - name: Run Horusec
-        run: horusec start -c=horusec-config.json -p./
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Install Docker
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y docker.io
+      shell: bash
+
+      # - name: Run Horusec
+      #   id: run_horusec
+      #   uses: fike/horusec-action@v0.2.2
+      #   with:
+      #     arguments: -c=horusec-config.json -p./
+      #     #arguments: -c=horusec-config.json -p ./
+    - name: Set up Horusec
+      run: |
+        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/master/deployments/scripts/install.sh | bash -s latest
+        export HORUSEC_MAVEN_DISABLE="false"
+      shell: bash
+
+    - name: Run Horusec
+      run: horusec start -c=horusec-config.json -p./
