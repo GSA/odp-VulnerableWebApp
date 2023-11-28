@@ -54,7 +54,7 @@ jobs:
 
     - name: Run Horusec Scan
       #run: horusec start -p .
-      run: horusec start -c=horusec-config.json -p ./
+      run: horusec start -D -e=true -c=horusec-config.json -p ./
 
     # - name: Run Horusec
     #   run: |
