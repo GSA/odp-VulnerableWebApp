@@ -1,0 +1,17 @@
+name: 'Horusec'
+description: 'Run Horusec SAST in your code'
+inputs:
+  arguments:
+    description: Arguments for horusec
+    required: false
+    
+runs:
+  using: 'docker'
+  image: 'Dockerfile'
+  args:
+    - ${{ inputs.arguments }}
+
+
+branding:
+  icon: "check"
+  color: "orange"
