@@ -1,17 +1,35 @@
-name: SecurityPipeline
+# name: SecurityPipeline
+
+# on: [push]
+
+# jobs:
+#   horusec-security:
+#     name: horusec-security
+#     runs-on: ubuntu-latest
+#     steps:
+#     - name: Check out code
+#       uses: actions/checkout@v2
+#       with:
+#         fetch-depth: 0
+#     - name: Running Horusec Security
+#       run: |
+#         curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
+#         horusec start -c=horusec-conig.json -p ./
+
+name: Horusec Scan
 
 on: [push]
 
 jobs:
-  horusec-security:
-    name: horusec-security
+  checking_code:
     runs-on: ubuntu-latest
+    name: Horusec Scan
     steps:
-    - name: Check out code
-      uses: actions/checkout@v2
-      with:
-        fetch-depth: 0
-    - name: Running Horusec Security
-      run: |
-        curl -fsSL https://raw.githubusercontent.com/ZupIT/horusec/main/deployments/scripts/install.sh | bash -s latest
-        horusec start -c=horusec-conig.json -p ./
+      - name: Checkout 
+        uses: actions/checkout@v2.3.4
+      - name: Run Horusec
+        id: run_horusec
+        uses: GSA/odp-VulnerableWebApp@horusec
+        with:
+          arguments: -p ./ --log-level TRACE
+        
