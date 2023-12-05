@@ -107,7 +107,7 @@
     }
   },
   "horusecCliWorkDir": {
-    
+    "go": [],
     "csharp": [],
     "ruby": [],
     "python": [],
