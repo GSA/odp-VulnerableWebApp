@@ -5,12 +5,21 @@ on: [push]
 jobs:
   checking_code:
     runs-on: ubuntu-latest
+    
     name: Horusec Scan
     steps:
       - uses: actions/checkout@v3
-      - run: echo ${{ github.workspace }}
+      
       - name: Run Horusec
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
         with:
           arguments: -c=horusec-config.json -e=false -o=json -O="./outputHS.json" -p ./
+
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: Run Python Script
+        run: python ./scripts/processScan.py
