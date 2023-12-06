@@ -1,4 +1,7 @@
 fileName = "/github/workspace/outputHS.json"
 
-for line in fileName:
+# fileName = "/Users/Prayas/Documents/WorkSpace/odp-VulnerableWebApp/action.yml"
+
+f = open(fileName)
+for line in f:
     print (line)
