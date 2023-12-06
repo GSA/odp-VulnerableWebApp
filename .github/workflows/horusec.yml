@@ -8,7 +8,7 @@ jobs:
     name: Horusec Scan
     steps:
       - uses: actions/checkout@v3
-
+      - run: echo ${{ github.workspace }}
       - name: Run Horusec
         id: run_horusec
         uses: fike/horusec-action@v0.2.2
