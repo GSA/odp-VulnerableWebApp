@@ -1,7 +1,10 @@
 import json
+import os
 fileName = "./output.json"
 
 #fileName = "/Users/Prayas/Documents/WorkSpace/odp-VulnerableWebApp/result.json"
+
+print(os.path.abspath(fileName))
 
 f = open(fileName)
 data = json.load(f)
