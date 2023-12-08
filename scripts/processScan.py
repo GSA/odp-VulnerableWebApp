@@ -1,20 +1,28 @@
 import json
-import os
 fileName = "./output.json"
 
 #fileName = "/Users/Prayas/Documents/WorkSpace/odp-VulnerableWebApp/result.json"
-
-print(os.path.abspath(fileName))
 
 f = open(fileName)
 data = json.load(f)
 vuln = 0
 sca = 0
+sev = {}
+lan = {}
 for i in data["analysisVulnerabilities"]:
     vulnerabliliy = i["vulnerabilities"]
-    if vulnerabliliy["file"] != "pom.xml":
-        #print (vulnerabliliy["file"], vulnerabliliy["severity"])
-        vuln += 1
+    
+    severity = vulnerabliliy ["severity"]
+    if severity in sev:
+        sev[severity] += 1
     else:
-        sca += 1
-print(vuln, sca)
+        sev[severity] = 1
+
+    language = vulnerabliliy ["language"]
+    if language in lan:
+        lan[language] += 1
+    else:
+        lan[language] = 1
+
+print (str(sev))
+print(lan)
