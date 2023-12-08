@@ -21,8 +21,7 @@
   "horusecCliEnableCommitAuthor": false,
   "horusecCliEnableGitHistoryAnalysis": false,
   "horusecCliEnableInformationSeverity": false,
-  "horusecCliFalsePositiveHashes": [
-  ],
+  "horusecCliFalsePositiveHashes": [],
   "horusecCliFilesOrPathsToIgnore": [
     "**/e2e/**",
     "**/examples/**",
@@ -37,17 +36,16 @@
   ],
   "horusecCliHeaders": {},
   "horusecCliHorusecApiUri": "http://0.0.0.0:8000",
-  "horusecCliJsonOutputFilepath": "",
+  "horusecCliJsonOutputFilepath": "./output.json",
   "horusecCliMonitorRetryInSeconds": 10,
-  "horusecCliPrintOutputType": "",
+  "horusecCliPrintOutputType": "json",
   "horusecCliProjectPath": "./",
   "horusecCliRepositoryAuthorization": "00000000-0000-0000-0000-000000000000",
   "horusecCliRepositoryName": "",
   "horusecCliReturnErrorIfFoundVulnerability": true,
   "horusecCliRiskAcceptHashes": [],
   "horusecCliSeveritiesToIgnore": [],
-  "horusecCliShowVulnerabilitiesTypes": [
-  ],
+  "horusecCliShowVulnerabilitiesTypes": [],
   "horusecCliTimeoutInSecondsAnalysis": 1000,
   "horusecCliTimeoutInSecondsRequest": 300,
   "horusecCliToolsConfig": {
