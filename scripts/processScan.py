@@ -1,5 +1,5 @@
 import json
-fileName = "./outputHS.json"
+fileName = "./output.json"
 
 #fileName = "/Users/Prayas/Documents/WorkSpace/odp-VulnerableWebApp/result.json"
 
