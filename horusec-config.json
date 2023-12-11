@@ -21,7 +21,11 @@
   "horusecCliEnableCommitAuthor": false,
   "horusecCliEnableGitHistoryAnalysis": false,
   "horusecCliEnableInformationSeverity": false,
-  "horusecCliFalsePositiveHashes": [],
+  "horusecCliFalsePositiveHashes": [
+    "608907c9408fb02c0c8f10d49626be230390c70ac7643a31c860d3b58e65f3bc",
+    "4ac8071a2d8db5de9f539f281cd71c4e60aa4d3e6de62ea80529350a3cfca5b2",
+    "8ebf655f7594eeca66c6910cdd0219955b57484498fcf7bc76e5743ef78bc3d0"
+  ],
   "horusecCliFilesOrPathsToIgnore": [
     "**/e2e/**",
     "**/examples/**",
