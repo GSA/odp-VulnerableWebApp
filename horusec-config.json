@@ -22,7 +22,14 @@
   "horusecCliEnableGitHistoryAnalysis": false,
   "horusecCliEnableInformationSeverity": false,
   "horusecCliFalsePositiveHashes": [
-   null
+    null,
+    "b7565f48f92bfd41790f62db2ffdba0c72eac92e3631f55d0f955ef10b477433",
+    "d9b86241233833d75a5e477600266d328639ecc1377bb14f7fa1e1104fc10333",
+    "77107b278f0a74a9677e1b405b6c3836e691215e45cd6766580ee118cef952db",
+    "dbaa6a448b3ab6a1e5dd0d82918c346853c58d77b945b7279ca58dc33e316182",
+    "846c674d73f0da10cd3fffed68105938559a6038d12bb24381ece6bcf94e90fa",
+    "9444a293898ffcd2311ed16f38624dc2a077e2cb085dca2b13c1e4623137594a",
+    "87842b919ce619f36e5211ad846a74f568a11d65997912d2c23e4965313f992a"
   ],
   "horusecCliFilesOrPathsToIgnore": [
     "**/e2e/**",
