@@ -31,7 +31,7 @@ def getResult():
     print(lan)
     
     if sev["CRITICAL"] > 10:
-        sys.exit(0)
+        sys.exit(1)
     else:
         sys.exit(0)
 
