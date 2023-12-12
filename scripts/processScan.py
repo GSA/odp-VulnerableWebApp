@@ -33,7 +33,7 @@ def getResult():
     critVuln = sev["CRITICAL"]
     critThreshold = 10
     if critVuln > critThreshold:
-        print("Scan failed because the app still has " + critVuln + " CRITICAL vulnerabilities\nThe amount of CRITICAL vulnerabilities allowed is: " + critThreshold"
+        print("Scan failed because the app still has " + str(critVuln) + " CRITICAL vulnerabilities\nThe amount of CRITICAL vulnerabilities allowed is: " + str(critThreshold))
         sys.exit(1)
     else:
         sys.exit(0)
